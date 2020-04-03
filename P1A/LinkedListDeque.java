@@ -4,7 +4,7 @@ public class LinkedListDeque<T> {
 
     public class NewNode<T> {
 
-        // java implementation of a CDLL
+        // java implementation of a CDLL!
 
         public T value;
         public NewNode<T> next;
