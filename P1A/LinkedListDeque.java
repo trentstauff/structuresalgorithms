@@ -158,39 +158,6 @@ public class LinkedListDeque<T> {
 
     public static void main(String[] args) {
         LinkedListDeque<Integer> list = new LinkedListDeque<Integer>();
-        list.addLast(99);
-        list.addLast(100);
-        list.addFirst(1);
-        list.addFirst(3);
-        list.addLast(123123);
-        list.addLast(69);
-        list.addFirst(33);
-        list.printDeque();
-        list.removeFirst();
-        list.printDeque();
-        System.out.println("Removed " + list.removeLast());
-        list.printDeque();
-        System.out.println("Removed " + list.removeLast());
-        list.printDeque();
-        System.out.println("Removed " + list.removeLast());
-        list.printDeque();
-        System.out.println("Removed " + list.removeLast());
-        list.printDeque();
-
-        System.out.println(list.size);
-        System.out.println(list.getRecursive(0));
-        System.out.println(list.isEmpty());
-
-        // list.removeLast();
-
-        // list.removeLast();
-        // System.out.println(list.get(4));
-        // System.out.println(list.getRecursive(2));
-        // System.out.println(list.get(2));
-        // LinkedListDeque<Integer> newList = new LinkedListDeque<Integer>(list);
-        // list.printDeque();
-        // newList.printDeque();
-        // // list.get(1);
-
+        // where to test functions
     }
 }
