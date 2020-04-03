@@ -1,6 +1,6 @@
 package P1A;
 
-/** Performs some basic linked list tests. */
+// File tests implemented CDLL
 public class LinkedListDequeTest {
 
     /* Utility method for printing out empty checks. */
