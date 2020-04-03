@@ -158,6 +158,6 @@ public class LinkedListDeque<T> {
 
     public static void main(String[] args) {
         LinkedListDeque<Integer> list = new LinkedListDeque<Integer>();
-        // where to test functions
+        // where to test functions!
     }
 }
