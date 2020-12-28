@@ -1,10 +1,6 @@
-package P1A;
-
 public class LinkedListDeque<T> {
 
     public class NewNode<T> {
-
-        // java implementation of a CDLL!
 
         public T value;
         public NewNode<T> next;
@@ -113,8 +109,8 @@ public class LinkedListDeque<T> {
             return null;
         } else {
             thing = sentinel.prev.value;
-            sentinel.prev.prev.next = sentinel;
             sentinel.prev = sentinel.prev.prev;
+            sentinel.prev.next = sentinel;
         }
         size--;
         return thing;
@@ -134,8 +130,6 @@ public class LinkedListDeque<T> {
         }
         return null;
     }
-
-    // idk
 
     public T getRecursive(int index) {
 
@@ -167,19 +161,10 @@ public class LinkedListDeque<T> {
         list.addFirst(33);
         list.printDeque();
         list.removeFirst();
-        list.printDeque();
-        System.out.println("Removed " + list.removeLast());
-        list.printDeque();
-        System.out.println("Removed " + list.removeLast());
-        list.printDeque();
-        System.out.println("Removed " + list.removeLast());
-        list.printDeque();
-        System.out.println("Removed " + list.removeLast());
+        list.removeLast();
+        list.addLast(44);
         list.printDeque();
 
-        System.out.println(list.size);
-        System.out.println(list.getRecursive(0));
-        System.out.println(list.isEmpty());
 
         // list.removeLast();
 
