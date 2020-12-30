@@ -111,50 +111,7 @@ public class HashTableSeperateChaining<K,V>{
             }
         }
     }
-
-     // --------------------------------------- RETRIEVAL OF AN ENTRY/VALUE ---------------------------------------
-
-    public boolean containsKey(K key){
-        return hasKey(key);
-    }
-
-    public boolean hasKey(K key){
-        
-        int index = normalizeIndex(key.hashCode());
-        return (bucketSeekEntry(index, key) != null);
-
-    }
-
-    // gets the value of a key
-    public V get(K key){
-
-        if(key == null) throw new IllegalArgumentException("Key cannot be null.");
-
-        int index = normalizeIndex(key.hashCode()); 
-        Entry<K,V> entry = bucketSeekEntry(index, key);
-
-        if (entry != null) return entry.value;
-            return null;
-
-    }
-
-    // looks for a key in a specified linked list and returns the whole entry
-    private Entry<K,V> bucketSeekEntry(int index, K key){
-
-            if(key == null) return null;
-            
-            LinkedList<Entry<K,V>> bucket = hashTable[index];
-
-            if(bucket == null) return null;
-
-            for(Entry<K,V> entry : bucket)
-            {
-                if(entry.key.equals(key)) return entry;
-            }
-
-            return null;
-    }
-
+    
     // --------------------------------------- ADDING OF AN ENTRY ---------------------------------------
 
     public V add(K key, V value){
@@ -204,15 +161,62 @@ public class HashTableSeperateChaining<K,V>{
 
     private K bucketRemoveEntry(K key){
 
-        int index = key.hashCode();
-
-        LinkedList<Entry<K,V>> bucket = hashTable[index];
-
+        int index = normalizeIndex(key.hashCode());
         Entry<K,V> entryToRemove = bucketSeekEntry(index, key);
-        if(entryToRemove == null ) 
-        K removedKey = entryToRemove.key;
-        bucket.remove(entryToRemove);
-        return removedKey;
+
+        if(entryToRemove == null ){
+            System.out.println("Key to remove does not exist.");
+            return null;
+        } else {
+            
+            LinkedList<Entry<K,V>> bucket = hashTable[index];
+
+            K removedKey = entryToRemove.key;
+            bucket.remove(entryToRemove);
+            return removedKey;
+        }
+}
+     // --------------------------------------- RETRIEVAL OF AN ENTRY/VALUE ---------------------------------------
+
+    public boolean containsKey(K key){
+        return hasKey(key);
+    }
+
+    public boolean hasKey(K key){
+        
+        int index = normalizeIndex(key.hashCode());
+        return (bucketSeekEntry(index, key) != null);
+
+    }
+
+    // gets the value of a key
+    public V get(K key){
+
+        if(key == null) throw new IllegalArgumentException("Key cannot be null.");
+
+        int index = normalizeIndex(key.hashCode()); 
+        Entry<K,V> entry = bucketSeekEntry(index, key);
+
+        if (entry != null) return entry.value;
+            return null;
+
+    }
+
+    // looks for a key in a specified linked list and returns the whole entry
+    private Entry<K,V> bucketSeekEntry(int index, K key){
+
+            if(key == null) return null;
+            
+            LinkedList<Entry<K,V>> bucket = hashTable[index];
+
+            if(bucket == null) return null;
+
+            for(Entry<K,V> entry : bucket)
+            {
+                if(entry.key.equals(key)) return entry;
+            }
+
+            return null;
     }
 
     // --------------------------------------- WORKER FUNCTIONS ---------------------------------------
@@ -265,11 +269,11 @@ public class HashTableSeperateChaining<K,V>{
         hashTable.add("Arden", 7);
         hashTable.add("Marcus", 8);
         hashTable.add("Test", 9);
-        
-        System.out.println(hashTable.capacity);
+        System.out.println(hashTable.containsKey("Adas"));
         System.out.println("");
         hashTable.remove("Adas");
-        // System.out.println(hashTable.keys().toString());
+        System.out.println(hashTable.containsKey("Adas"));
+        System.out.println(hashTable.keys().toString());
         hashTable.print();
     }
 }
