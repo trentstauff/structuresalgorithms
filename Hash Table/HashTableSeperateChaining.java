@@ -192,7 +192,30 @@ public class HashTableSeperateChaining<K,V>{
         }
     }
 
-    // --------------------------------------- WORKER FUNCTIONS --------------------------------------------------
+    // --------------------------------------- REMOVAL OF AN ENTRY ---------------------------------------
+
+    public K remove(K key){
+
+        if(key == null) throw new IllegalArgumentException("Key to remove cannot be null.");
+
+        return bucketRemoveEntry(key);
+
+    }
+
+    private K bucketRemoveEntry(K key){
+
+        int index = key.hashCode();
+
+        LinkedList<Entry<K,V>> bucket = hashTable[index];
+
+        Entry<K,V> entryToRemove = bucketSeekEntry(index, key);
+        if(entryToRemove == null ) 
+        K removedKey = entryToRemove.key;
+        bucket.remove(entryToRemove);
+        return removedKey;
+    }
+
+    // --------------------------------------- WORKER FUNCTIONS ---------------------------------------
 
     // returns the index of the linked list that the entry may be in
     private int normalizeIndex(int keyHash){
@@ -231,15 +254,22 @@ public class HashTableSeperateChaining<K,V>{
 
     public static void main(String[] args) {
         HashTableSeperateChaining<String, Integer> hashTable = new HashTableSeperateChaining<>();
+        // adding items to hash table
         hashTable.add("Trent", 0);
         hashTable.add("Trent", 1);
         hashTable.add("Kaveen", 2);
-        hashTable.add("Adas", 4);
-        hashTable.add("ddd", 4);
-        hashTable.add("444", 4);
-        hashTable.add("asdasd", 4);
-
+        hashTable.add("Adas", 3);
+        hashTable.add("Jonah", 4);
+        hashTable.add("Sarah", 5);
+        hashTable.add("Will", 6);
+        hashTable.add("Arden", 7);
+        hashTable.add("Marcus", 8);
+        hashTable.add("Test", 9);
+        
+        System.out.println(hashTable.capacity);
+        System.out.println("");
+        hashTable.remove("Adas");
+        // System.out.println(hashTable.keys().toString());
         hashTable.print();
     }
-
 }
