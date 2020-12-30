@@ -2,7 +2,8 @@ import java.util.*;
 
 public class HashTableSeperateChaining<K,V>{
 
-    public class Entry<K,V> {
+    // internal Entry class used by the HashTable
+    private class Entry<K,V> {
 
         K key;
         V value;
@@ -20,7 +21,8 @@ public class HashTableSeperateChaining<K,V>{
             return this.key.equals(otherEntry.key);
         }
     }
-
+    
+    // default standard values
     private static final int DEFAULT_CAPACITY = 3;
     private static final double DEFAULT_LOAD_FACTOR = 0.75;
 
@@ -39,6 +41,7 @@ public class HashTableSeperateChaining<K,V>{
     // our actual hash table
     private LinkedList<Entry<K,V>> hashTable[];
 
+    // empty constructor uses default values
     public HashTableSeperateChaining(){
         this(DEFAULT_CAPACITY, DEFAULT_LOAD_FACTOR);
     }
@@ -71,7 +74,7 @@ public class HashTableSeperateChaining<K,V>{
         size = 0;
     }  
 
-    // Returns the list of keys found within the hash table
+    // returns the list of keys found within the hash table
     public List<K> keys() {
 
         List<K> keys = new ArrayList<>(size());
@@ -84,7 +87,7 @@ public class HashTableSeperateChaining<K,V>{
         return keys;
       }
 
-    // Returns the list of values found within the hash table
+    // returns the list of values found within the hash table
     public List<V> values() {
 
         List<V> values = new ArrayList<>(size());
